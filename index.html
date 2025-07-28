@@ -1,12 +1,85 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Visor REACT - EMA</title>
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.jsx"></script>
-  </body>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Visor EMA</title>
+  <link rel="stylesheet" href="build/css/app.css">
+  <style>
+    .serie {
+      border-right: 1px solid;
+    }
+
+    .barraStatus {
+      font-size: 1rem;
+    }
+
+    .ts {
+      font-size: 4rem;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container-fluid mt-2">
+    <div class="row">
+      <div class="col-md-4 offset-md-4">
+        <div class="card">
+          <div class="card-header bg-black text-white d-flex justify-content-between align-items-center">
+            <p id="nombreEstacion" class="my-0"></p>
+            <button class="btn btn-dark shadow m-0 p-0" id="btnSwitch">
+              <img src="src/img/day-and-night.jpg" alt="" class="img-fluid m-0 p-0" >
+            </button>
+          </div>
+          <div class="card-body">
+            <h1 class="text-center ts" id="ts"></h1>
+            <h5 class="text-center">
+              <span id="hr" class="px-2 serie text-success"></span>
+              <span id="td" class="px-2 serie text-info"></span>
+              <span id="pl" class="px-2" title = 'Presión a nivel de la estación'></span>
+            </h5>
+
+            <div class="row border-top">
+              <div class="col-6">
+                <p class="m-0 mt-3 fw-bold fs-6 border-bottom"> <small>Temperaturas Extremas</small> </p>
+                <div class="mt-2 w-100 d-flex justify-content-between">
+                  <span class="fw-bold">Hoy</span>
+                  <span id="idTsMinimaHoy" class="text-info fw-bold"></span>
+                  <span id="idTsMaximaHoy" class="text-danger fw-bold"></span>
+                </div>
+                <div class="mt-2 w-100 d-flex justify-content-between">
+                  <span class="fw-bold">Ayer</span>
+                  <span id="idTsMinimaAyer" class="text-info  fw-bold"></span>
+                  <span id="idTsMaximaAyer" class="text-danger fw-bold"></span>
+                </div>
+              </div>
+              <div class="col-6 border-start">
+                <p class="m-0 mt-3 fw-bold fs-6 border-bottom"> <small>Precipitación</small> </p>
+                <div class="mt-2 w-100 d-flex justify-content-between">
+                  <span class="fw-bold">Hoy</span>
+                  <span id="aguaHoy" class="text-success fw-bold "></span>
+                </div>
+                <div class="mt-2 w-100 d-flex justify-content-between">
+                  <span class="fw-bold">Ayer</span>
+                  <span id="aguaAyer" class="text-success fw-bold "></span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="card-footer d-flex justify-content-between">
+              <small><span id="idMomentoActual" class="fw-bold"></span></small>
+              <small><span id="statusId" class="fw-bold"></span></small> 
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  </div>
+</body>
+
+<script src="js/moment.js"></script>
+<script src="js/app.js" type="module"></script>
+
 </html>
