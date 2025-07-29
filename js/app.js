@@ -1,4 +1,4 @@
-import { delayDatos, segundosPalabras } from './componentes/index.js'
+import { delayDatos, segundosPalabras } from './index.js'
 
 var codigoEstacion = '330020';
 
