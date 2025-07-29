@@ -19,11 +19,12 @@ export async function getDatos() {
         const res = await fetch(url);
         const data = await res.json();
         actualizaDatos(data);
-        setTimeout(getDatos, 300000)
+        actualizaHora()
+        setTimeout(getDatos, 180000)
     } catch (error) {
         console.log(error)
         alert('No pude conectarme a la API');
-        setTimeout(getDatos, 300000)
+        setTimeout(getDatos, 180000)
     }
 }
 
@@ -124,8 +125,6 @@ function actualizaDatos(datosActuales) {
     pl.innerHTML = Number(presionEstacion).toFixed(1) + ' hPa'
 
    momentoDatos = momento
-   actualizaHora()
-
 }
 
 
