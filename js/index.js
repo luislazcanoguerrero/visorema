@@ -17,8 +17,10 @@ function segundosPalabras(segundos){
     const dias = Math.floor(segundos / 86400);
     const horas = Math.floor((segundos - (dias * 86400)) / 3600);
     const minutos = Math.floor((segundos - (dias * 86400) - (horas * 3600)) / 60);
+    const seg = Math.floor((segundos - (dias * 86400) - (horas * 3600) - (minutos * 60)));
 
-    tiempo = (minutos > 0) ? `${minutos}min`: tiempo
+    tiempo = `${seg}seg.`
+    tiempo = (minutos > 0) ? `${minutos}min. ` + tiempo: tiempo
     tiempo = (horas > 0) ? `${horas}horas. ` + tiempo : tiempo
     tiempo = (dias > 0) ? `${dias}dias. ` + tiempo : tiempo
     return tiempo

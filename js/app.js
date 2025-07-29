@@ -1,5 +1,6 @@
 import { delayDatos, segundosPalabras } from './index.js'
 
+var momentoDatos;
 var codigoEstacion = '330020';
 
 document.getElementById('btnSwitch').addEventListener('click', () => {
@@ -29,8 +30,14 @@ export async function getDatos() {
 function actualizaHora() {
     const fechaActual = moment()
     const idMomentoActual = document.getElementById('idMomentoActual');
-    const fechaFormateada2 = fechaActual.format('DD-MM-YYYY, h:mm:ss a');
+    const fechaFormateada2 = fechaActual.format('h:mm a');
     idMomentoActual.innerHTML = fechaFormateada2
+
+    const statusId = document.getElementById('statusId');
+    const delayMediciones = segundosPalabras(delayDatos(momentoDatos))
+    statusId.innerHTML = `Datos de ${delayMediciones} atrás`
+    statusId.title = momentoDatos
+
     setTimeout(actualizaHora, 1000)
 }
 
@@ -116,15 +123,9 @@ function actualizaDatos(datosActuales) {
     td.innerHTML = Number(puntoDeRocio).toFixed(1) + ' °'
     pl.innerHTML = Number(presionEstacion).toFixed(1) + ' hPa'
 
+   momentoDatos = momento
+   actualizaHora()
 
-
-    const statusId = document.getElementById('statusId');
-    const delayMediciones = segundosPalabras(delayDatos(momento))
-    statusId.innerHTML = `Datos de ${delayMediciones} atrás`
-    statusId.title = momento
-
-    const fechaFormateada2 = fechaActual.format('MMMM Do YYYY, h:mm:ss a');
-    idMomentoActual.innerHTML = fechaFormateada2
 }
 
 
@@ -136,5 +137,5 @@ if(!codigoEstacion){
 }
 
 getDatos()
-actualizaHora()
+
 
